@@ -1,0 +1,111 @@
+젯슨 초기 세팅 
+
+1. 한글 입력기
+https://ghostweb.tistory.com/798
+
+2. python3.7 다운
+https://grow-up-by-coding.tistory.com/10
+
+3. python 버전 변경 
+https://codechacha.com/ko/change-python-version/
+
+4. vim 설정
+https://hyoje420.tistory.com/51
+
+5. pip download
+sudo apt-get install python3-pip
+
+6. i2c 확인
+i2cdetect -r -y 1 
+명령어 입력 시 
+bme280 - 77
+sgp30  - 58
+veml7700 - 10
+scd30  - 61
+주소가 제대로 나오는지 확인
+
+
+7.bme280
+참고 사이트 = https://learn.adafruit.com/adafruit-bme280-humidity-barometric-pressure-temperature-sensor-breakout/python-circuitpython-test
+
+sudo pip3 install adafruit-circuitpython-bme280
+pip3 install --upgrade adafruit_blinka
+# 예제 코드는 python3 으로 실행할 것 
+
+8. sgp30
+참고 사이트 = https://github.com/adafruit/Adafruit_CircuitPython_SGP30
+pip3 install adafruit-circuitpython-sgp30
+=> ValeuError!! Can not found address 0x58  
+=> 여기서 제공해주는 코드 사용시, 위의 에러가 발생. 원인은 아직 모름.
+
+another method
+참고 사이트 = https://github.com/pimoroni/sgp30-python
+sudo pip3 install pimoroni-sgp30
+pip3 install smbus2
+
+9.veml7700
+참고 사이트 = https://github.com/adafruit/Adafruit_CircuitPython_VEML7700
+
+pip3 install adafruit-circuitpython-veml7700
+
+# i2c.scan = [16, 97, 119]
+
+10.scd30
+참고 사이트 = https://github.com/adafruit/Adafruit_CircuitPython_SCD30
+pip3 install adafruit-circuitpython-scd30
+
+# github 예제 코드에는 scd객체 생성후 CO2정보를 받을 때 scd.CO2라고 되어있지만, scd.eCO2로 바꿔야함. 출처 = https://pypi.org/project/adafruit-circuitpython-scd30/
+
+11. 코드 통합
+
+12. 패키지 경로 찾기
+
+SGP30 센서 코드를 통합할 때, from sgp30 import SGP30으로 모듈을 불러옵니다.
+다른 센서랑 양식이 달라서, 패키지를 직접 찾아보려 했습니다.
+
+SGP30을 제외한 모든 adafruit 계열 패키지는 
+/home/etri/.local/lib/python3.6/site-packages/adafruit_scd30.py
+처럼 .local 안에 설치가 되는데, SGP30은 여기서 찾을 수 없었습니다. 
+
+따라서 파이썬 모듈 라이브러리 파일 경로를 찾을 수 있는 라이브러리인 inspect를 사용해서 주소를 찾았습니다. 
+
+```
+>>> import inspect
+>>> from sgp30 import SGP30
+>>> import adafruit_scd30
+>>> print(inspect.getfile(SGP30))
+/usr/local/lib/python3.6/dist-packages/sgp30/__init__.py
+>>> print(inspect.getfile(adafruit_scd30))
+/home/etri/.local/lib/python3.6/site-packages/adafruit_scd30.py
+
+/usr/local/lib에 있는 것을 확인했습니다. 
+
+
+13. 장고 프레임워크 설치
+참고 사이트 = https://m.blog.naver.com/PostView.nhn?blogId=roboholic84&logNo=221033386937&proxyReferer=https:%2F%2Fwww.google.com%2F
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get autoremove
+
+sudo apt-get install python-mysqldb -y
+sudo apt-get install apache2 -y
+sudo apt-get install mysql-server mysql-client -y
+
+하다가 에러남
+
+
+https://developer.mozilla.org/ko/docs/Learn/Server-side/Django/development_environment
+
+
+
+14. 그래프 그리기
+https://infinitt.tistory.com/40
+
+pip3 install cython
+pip3 install numpy
+
+
+
+
+
+
