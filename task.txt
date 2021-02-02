@@ -104,8 +104,17 @@ https://infinitt.tistory.com/40
 pip3 install cython
 pip3 install numpy
 
+15. mysql
 
+tutorial Django & MysQL connect =  https://www.tuwlab.com/26314
+Django & MysQL connect = https://velog.io/@devmin/Django-MySQL-Connect
+main setting = https://dejavuqa.tistory.com/317
+remove = http://www.findjobs.co.kr/board/index.html?id=linux&no=131
+dpkg error = http://melonicedlatte.com/linux/2017/02/06/141138.html
+collect data = https://blog.naver.com/simjk98/221229266764
 
-
-
+sudo apt-get install mysql-server
+sudo apt-get install python-dev libmysqlclient-dev 
+sudo apt-get install python3-dev
+pip3 install mysqlclient
 
